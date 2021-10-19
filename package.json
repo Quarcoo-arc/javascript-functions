@@ -16,5 +16,17 @@
     "esprima": "^4.0.1",
     "jscodeshift": "^0.6.4",
     "mocha": "^6.2.0"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Quarcoo-arc/javascript-functions.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Quarcoo-arc/javascript-functions/issues"
+  },
+  "homepage": "https://github.com/Quarcoo-arc/javascript-functions#readme"
 }
