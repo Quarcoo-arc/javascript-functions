@@ -34,8 +34,8 @@ const corners = (state = []) => {
   } else if (state.length === 1) {
     return { topRight: state[0][0], bottomLeft: state[0][1] };
   } else {
-    let topRight = state[0];
-    let bottomLeft = state[0];
+    let topRight = [...state[0]];
+    let bottomLeft = [...state[0]];
 
     for (let i = 0; i < state.length; i++) {
       // topRight[0] = topRight[0] < state[i][0] ? state[i][0] : topRight[0];
