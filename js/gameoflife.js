@@ -81,7 +81,7 @@ const corners = (state = []) => {
 
 //TODO: Printcells
 const printCells = (state) => {
-  const { bottomLeft, topRight } = corners(state);
+  const { topRight, bottomLeft } = corners(state);
   let cells = "";
 
   for (let j = topRight[1]; j >= bottomLeft[1]; j--) {
@@ -129,7 +129,12 @@ const getLivingNeighbors = (cell, state) => {
   return livingNeighbors;
 };
 
-const willBeAlive = (cell, state) => {};
+const willBeAlive = (cell, state) => {
+  return getLivingNeighbors(cell, state).length === 3 ||
+    (contains.call(state, cell) && getLivingNeighbors(cell, state).length === 2)
+    ? true
+    : false;
+};
 
 const calculateNext = (state) => {};
 
