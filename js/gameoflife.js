@@ -27,7 +27,6 @@ const printCell = (cell, state) => {
   return isContained ? "\u25A3" : "\u25A2";
 };
 
-//TODO: Corners
 const corners = (state = []) => {
   if (state.length === 0) {
     return { topRight: [0, 0], bottomLeft: [0, 0] };
@@ -80,15 +79,27 @@ const corners = (state = []) => {
   }
 };
 
+//TODO: Printcells
 const printCells = (state) => {
-  const { topRight, bottomLeft } = corners(state);
+  const { bottomLeft, topRight } = corners(state);
   let cells = "";
 
-  for (let i = bottomLeft[0]; i <= topRight[0]; i++) {
-    for (let j = bottomLeft[1]; j <= topRight[1]; j++) {
-      cells = `${cells} ${printCell([i, j], state)}\n`;
+  for (let j = topRight[1]; j >= bottomLeft[1]; j--) {
+    let row = [];
+    for (let i = bottomLeft[0]; i <= topRight[0]; i++) {
+      // cells += printCell([i, j], state) + " ";
+      row.push(printCell([i, j], state));
     }
+    // cells += "\n";
+    cells += row.join(" ") + "\n";
   }
+
+  // for (let i = bottomLeft[0]; i <= topRight[0]; i++) {
+  //   for (let j = topRight[1]; j >= bottomLeft[1]; j--) {
+  //     cells += printCell([i, j], state) + " ";
+  //   }
+  //   cells += "\n";
+  // }
 
   return cells;
 };
@@ -110,7 +121,7 @@ const getLivingNeighbors = (cell, state) => {
   const neighbors = getNeighborsOf(cell);
   const livingNeighbors = [];
   for (const neighbor of neighbors) {
-    const isContained = contains.bind(state, neighbor);
+    const isContained = contains.bind(state)(neighbor);
     if (isContained) {
       livingNeighbors.push(neighbor);
     }
