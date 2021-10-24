@@ -136,7 +136,22 @@ const willBeAlive = (cell, state) => {
     : false;
 };
 
-const calculateNext = (state) => {};
+const calculateNext = (state) => {
+  let { topRight, bottomLeft } = corners(state);
+
+  topRight = [topRight[0] + 1, topRight[1] + 1];
+  bottomLeft = [bottomLeft[0] - 1, bottomLeft[1] - 1];
+
+  const gameState = [];
+  for (let i = bottomLeft[0]; i <= topRight[0]; i++) {
+    for (let j = bottomLeft[1]; j <= topRight[1]; j++) {
+      if (willBeAlive([i, j], state)) {
+        gameState.push([i, j]);
+      }
+    }
+  }
+  return gameState;
+};
 
 const iterate = (state, iterations) => {};
 
