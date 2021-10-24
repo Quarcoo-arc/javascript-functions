@@ -85,22 +85,14 @@ const printCells = (state) => {
   let cells = "";
 
   for (let j = topRight[1]; j >= bottomLeft[1]; j--) {
-    let row = [];
+    //let row = [];
     for (let i = bottomLeft[0]; i <= topRight[0]; i++) {
-      // cells += printCell([i, j], state) + " ";
-      row.push(printCell([i, j], state));
+      cells += printCell([i, j], state) + " ";
+      //row.push(printCell([i, j], state));
     }
-    // cells += "\n";
-    cells += row.join(" ") + "\n";
+    cells += "\n";
+    //cells += row.join(" ") + "\n";
   }
-
-  // for (let i = bottomLeft[0]; i <= topRight[0]; i++) {
-  //   for (let j = topRight[1]; j >= bottomLeft[1]; j--) {
-  //     cells += printCell([i, j], state) + " ";
-  //   }
-  //   cells += "\n";
-  // }
-
   return cells;
 };
 
