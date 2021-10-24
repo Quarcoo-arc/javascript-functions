@@ -153,9 +153,20 @@ const calculateNext = (state) => {
   return gameState;
 };
 
-const iterate = (state, iterations) => {};
+const iterate = (state, iterations) => {
+  const gameState = [state];
+  for (let i = 0; i < iterations; i++) {
+    let newState;
+    newState = calculateNext(gameState[gameState.length - 1]);
+    gameState.push(newState);
+  }
+  return gameState;
+};
 
-const main = (pattern, iterations) => {};
+const main = (pattern, iterations) => {
+  const gameStates = iterate(startPatterns[pattern], iterations);
+  gameStates.forEach((gameState) => console.log(printCells(gameState)));
+};
 
 const startPatterns = {
   rpentomino: [
